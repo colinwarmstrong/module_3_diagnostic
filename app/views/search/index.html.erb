@@ -1,0 +1,9 @@
+<h2>Search Results:</h2>
+
+<% @stations.each do |station| %>
+  <p>Station name: <%= station[:station_name] %></p>
+  <p>Address: <%= station[:street_address] %><p>
+  <p>Fuel type: <%= station[:fuel_type_code] %><p>
+  <p>Distance: <%= station[:distance] %> miles<p>
+  <p>Access Times: <%= station[:access_days_time] %><p>
+<% end %>
