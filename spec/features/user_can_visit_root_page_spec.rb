@@ -10,6 +10,11 @@ feature "User can visit root page" do
   end
 
   scenario 'and search for a list of the ten closest stations sorted by distance within 6 miles' do
+    json = File.read('./spec/fixtures/nearest_stations.json')
+
+    stub_request(:get, "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=LhAIm93PCQmmy2E5R0DMRwdctwa1UW0YuvmXlDmD&fuel_type=ELEC,%20LPG&location=80203&radius=6.0")
+    .to_return(status: 200, body: json, headers: {})
+
     visit root_path
 
     zip_code = '80203'
