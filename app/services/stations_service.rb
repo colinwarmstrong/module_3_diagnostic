@@ -17,6 +17,6 @@ class StationsService
   end
 
   def call
-    @conn.get("alt-fuel-stations/v1/nearest.json?api_key=LhAIm93PCQmmy2E5R0DMRwdctwa1UW0YuvmXlDmD&location=#{@zip_code}&radius=6.0&fuel_type=ELEC, LPG")
+    @conn.get("alt-fuel-stations/v1/nearest.json?api_key=#{ENV['API_KEY']}&location=#{@zip_code}&radius=6.0&fuel_type=ELEC, LPG")
   end
 end
