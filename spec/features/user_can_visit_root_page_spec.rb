@@ -11,13 +11,14 @@ feature "User can visit root page" do
 
   scenario 'and search for a list of the ten closest stations sorted by distance within 6 miles' do
     json = File.read('./spec/fixtures/nearest_stations.json')
+    zip_code = '80203'
+    fuel_type = 'ELEC,%20LPG'
+    radius = '6.0'
 
-    stub_request(:get, "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=LhAIm93PCQmmy2E5R0DMRwdctwa1UW0YuvmXlDmD&fuel_type=ELEC,%20LPG&location=80203&radius=6.0")
+    stub_request(:get, "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['API_KEY']}&fuel_type=#{fuel_type}&location=#{zip_code}&radius=#{radius}")
     .to_return(status: 200, body: json, headers: {})
 
     visit root_path
-
-    zip_code = '80203'
 
     fill_in :q, with: zip_code
     click_on 'Locate'
