@@ -8,7 +8,7 @@ describe StationsSearch, type: :model do
   end
 
   describe 'Instance Methods' do
-    it '#ten_closest_stations' do
+    it '#closest_stations' do
       json = File.read('./spec/fixtures/nearest_stations.json')
       zip_code = '80203'
       fuel_type = 'ELEC,%20LPG'
@@ -16,10 +16,10 @@ describe StationsSearch, type: :model do
 
       stub_request(:get, "https://developer.nrel.gov/api/alt-fuel-stations/v1/nearest.json?api_key=#{ENV['API_KEY']}&fuel_type=#{fuel_type}&location=#{zip_code}&radius=#{radius}")
       .to_return(status: 200, body: json, headers: {})
-      
+
       stations_search = StationsSearch.new('80203', '6.0', ['ELEC, LPG'])
 
-      stations = stations_search.ten_closest_stations
+      stations = stations_search.closest_stations
       station = stations.first
 
       expect(stations).to be_an(Array)

@@ -9,7 +9,7 @@ feature "User can visit root page" do
     end
   end
 
-  scenario 'and search for a list of the ten closest stations sorted by distance within 6 miles' do
+  scenario 'and search for a list of the ten closest stations sorted by distance' do
     json = File.read('./spec/fixtures/nearest_stations.json')
     zip_code = '80203'
     fuel_type = 'ELEC,%20LPG'
