@@ -9,16 +9,18 @@ feature "User can visit root page" do
     end
   end
 
-  it 'they can search for a list of the ten closest stations sorted by distance within 6 miles' do
+  scenario 'and search for a list of the ten closest stations sorted by distance within 6 miles' do
     visit root_path
 
-    fill_in :q, with: '80203'
+    zip_code = '80203'
+
+    fill_in :q, with: zip_code
     click_on 'Locate'
 
     expect(current_path).to eq(search_path)
     expect(page).to have_content('Search Results:')
     expect(page).to have_css('.station', count: 10)
-    
+
     within(first('.station')) do
       expect(page).to have_content('Station Name: UDR')
       expect(page).to have_content('Address: 800 Acoma St')

@@ -1,6 +1,5 @@
 class StationsService
   def initialize(zip_code, radius, fuel_types)
-    @conn = establish_connection
     @zip_code = zip_code
     @radius = radius
     @fuel_types = fuel_types
@@ -12,11 +11,11 @@ class StationsService
 
   private
 
-  def establish_connection
+  def connection
     Faraday.new(url: 'https://developer.nrel.gov/api/')
   end
 
   def call
-    @conn.get("alt-fuel-stations/v1/nearest.json?api_key=#{ENV['API_KEY']}&location=#{@zip_code}&radius=#{@radius}&fuel_type=#{@fuel_types.join}")
+    connection.get("alt-fuel-stations/v1/nearest.json?api_key=#{ENV['API_KEY']}&location=#{@zip_code}&radius=#{@radius}&fuel_type=#{@fuel_types.join}")
   end
 end
