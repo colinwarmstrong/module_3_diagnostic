@@ -13,9 +13,7 @@ class StationsService
   private
 
   def establish_connection
-    Faraday.new(url: 'https://developer.nrel.gov/api/') do |faraday|
-      faraday.adapter Faraday.default_adapter
-    end
+    Faraday.new(url: 'https://developer.nrel.gov/api/')
   end
 
   def call
