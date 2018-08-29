@@ -24,11 +24,11 @@ feature "User can visit root page" do
     expect(page).to have_css('.station', count: 10)
     # And for each of the stations I should see Name, Address, Fuel Types, Distance, and Access Times
     within(first('.station')) do
-      expect(page).to have_content('Station Name: 1800 Larimer')
-      expect(page).to have_content('Address: 1800 Larimer Street, Suite 1800')
+      expect(page).to have_content('Station Name: UDR')
+      expect(page).to have_content('Address: 800 Acoma St')
       expect(page).to have_content('Fuel Type: ELEC')
-      expect(page).to have_content('Distance: 0.14269 miles')
-      expect(page).to have_content('Access Times: MO: 12:00am-12:00am; TU: 12:00am-12:00am; WE: 12:00am-12:00am; TH: 12:00am-12:00am; FR: 12:00am-12:00am; SA: 12:00am-12:00am; SU: 12:00am-12:00am')
+      expect(page).to have_content('Distance: 0.31422 miles')
+      expect(page).to have_content('Access Times: 24 hours daily')
     end
   end
 end
