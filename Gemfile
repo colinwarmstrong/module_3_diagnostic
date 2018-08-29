@@ -27,7 +27,7 @@ end
 group :test do
   gem 'simplecov'
   gem 'vcr'
-  gem 'webmock'
+  gem 'webmock' 
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers'
