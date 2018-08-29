@@ -1,7 +1,9 @@
 class StationsService
-  def initialize(zip_code)
+  def initialize(zip_code, radius, fuel_types)
     @conn = establish_connection
     @zip_code = zip_code
+    @radius = radius
+    @fuel_types = fuel_types
   end
 
   def parse_json
@@ -17,6 +19,6 @@ class StationsService
   end
 
   def call
-    @conn.get("alt-fuel-stations/v1/nearest.json?api_key=#{ENV['API_KEY']}&location=#{@zip_code}&radius=6.0&fuel_type=ELEC, LPG")
+    @conn.get("alt-fuel-stations/v1/nearest.json?api_key=#{ENV['API_KEY']}&location=#{@zip_code}&radius=#{@radius}&fuel_type=#{@fuel_types.join}")
   end
 end

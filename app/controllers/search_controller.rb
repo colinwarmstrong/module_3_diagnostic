@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @stations = StationsSearch.new.ten_closest_stations(params[:q])
+    search = StationsSearch.new((params[:q]))
+    @stations = search.ten_closest_stations
   end
 end
