@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'activejob', '>= 5.1.6.1'
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass'
 gem 'coffee-rails'
 gem 'faraday'
 gem 'figaro'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'rails', '5.2.1'
-gem 'sass-rails', '~> 5.0.6'
+gem 'sass-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
